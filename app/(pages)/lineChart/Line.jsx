@@ -104,52 +104,83 @@ const Line = ({isDahboard}) => {
             tableCellValue: {},
           },
         }}
-        margin={{ top: 20, right: 150, bottom: 60, left: 100 }}
-        xScale={{ type: 'point' }}
-        yScale={{
-            type: 'linear',
-            min: 'auto',
-            max: 'auto',
-            stacked: true,
-            reverse: false
-        }}
-        curve="catmullRom"
+        margin={{ top: 50, right: 160, bottom: 50, left: 60 }}
+        xScale={{ type: 'linear' }}
+        yScale={{ type: 'linear', stacked: true, min: 0, max: 1000 }}
         yFormat=" >-.2f"
+        curve="monotoneX"
         axisTop={null}
-        axisRight={null}
-        axisBottom={{
+        axisRight={{
+            tickValues: [
+                0,
+                500,
+                1000,
+            ],
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'transportation',
-            legendOffset: 40,
+            format: '.2s',
+            legend: '',
+            legendOffset: 0
+        }}
+        axisBottom={{
+            tickValues: [
+                0,
+                20,
+                40,
+                60,
+                80,
+                100,
+                120,
+            ],
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            format: '.2f',
+            legend: 'price',
+            legendOffset: 36,
             legendPosition: 'middle'
         }}
         axisLeft={{
+            tickValues: [
+                0,
+                500,
+                1000,
+            ],
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'count',
-            legendOffset: -45,
+            format: '.2s',
+            legend: 'volume',
+            legendOffset: -40,
             legendPosition: 'middle'
         }}
-        pointSize={10}
+        enableGridX={false}
+        enableGridY={true}
+        enablePoints={true}
+        colors={{ scheme: 'category10' }}
+        lineWidth={2}
+        pointSize={5}
         pointColor={{ theme: 'background' }}
         pointBorderWidth={2}
         pointBorderColor={{ from: 'serieColor' }}
+        pointLabel="data.yFormatted"
         pointLabelYOffset={-12}
+        enableTouchCrosshair={true}
         useMesh={true}
+        gridXValues={[ 0, 20, 40, 60, 80, 100, 120 ]}
+        gridYValues={[ 0, 500, 1000, 1500, 2000, 2500 ]}
         legends={[
             {
                 anchor: 'bottom-right',
                 direction: 'column',
                 justify: false,
-                translateX: 100,
+                translateX: 140,
                 translateY: 0,
-                itemsSpacing: 0,
+                itemsSpacing: 2,
                 itemDirection: 'left-to-right',
                 itemWidth: 80,
-                itemHeight: 20,
+                itemHeight: 30,
                 itemOpacity: 0.75,
                 symbolSize: 12,
                 symbolShape: 'circle',

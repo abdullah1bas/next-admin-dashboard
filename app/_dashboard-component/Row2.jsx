@@ -14,7 +14,7 @@ const Row2 = () => {
   const theme = useTheme();
   return (
     <Stack direction={"row"} flexWrap={"wrap"} gap={1.2} mt={1.3}>
-      <Paper sx={{ maxWidth: 900, flexGrow: 1, minWidth: "400px" }}>
+      <Paper sx={{  flexGrow: 1, minWidth: "400px" }}>
         <Stack
           alignItems={"center"}
           direction={"row"}
