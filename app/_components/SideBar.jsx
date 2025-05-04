@@ -24,7 +24,6 @@ import {
 } from "@mui/icons-material";
 import { grey } from "@mui/material/colors";
 import { usePathname, useRouter } from "next/navigation";
-import { useUser } from "@clerk/nextjs";
 import { DrawerHeader } from "./AppRoot";
 import { useEffect } from "react";
 
@@ -111,7 +110,6 @@ const SideBar = ({ open, handleDrawerClose }) => {
   const theme = useTheme();
   const router = useRouter();
   const pathname = usePathname();
-  const {user} = useUser();
   useEffect(() => {
     if (knownPaths.includes(pathname)) {
       document.title = pathname === '/' ? 'Dashboard' : pathname.slice(1);
@@ -138,7 +136,7 @@ const SideBar = ({ open, handleDrawerClose }) => {
         <Avatar
           title="user photo"
           alt="Remy Sharp"
-          src={user?.imageUrl}
+          src={'https://github.com/abdullah1bas/React-Admin-Dashboard/blob/main/src/images/photoInst.jpg?raw=true'}
           sx={{
             m: "8px auto",
             width: open ? 88 : 56,
@@ -152,13 +150,13 @@ const SideBar = ({ open, handleDrawerClose }) => {
           align="center"
           sx={{ fontSize: open ? 17 : 0, transition: ".3s" }}
         >
-          {user?.username}
+          Abdullah Abazza
         </Typography>
         <Typography
           align="center"
           sx={{ fontSize: open ? 14 : 0, transition: ".3s" }}
         >
-          {user?.primaryEmailAddress?.emailAddress}
+          abdullah.abazza@gmail.com
         </Typography>
         <Typography
           align="center"

@@ -1,7 +1,6 @@
-import {Roboto} from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import AppRoot from "./_components/AppRoot";
-import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Roboto({ subsets: ["latin"], weight: "700" });
 
@@ -12,17 +11,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <head>
-          <title>{metadata.title}</title>
-          <meta name="description" content={metadata.description} />
-          <link rel="icon" href="/logo.svg" />
-        </head>
-        <body className={`${inter.className}`}>
-          <AppRoot child={children} />
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <link rel="icon" href="/logo.svg" />
+      </head>
+      <body className={`${inter.className}`}>
+        <AppRoot child={children} />
+      </body>
+    </html>
   );
 }

@@ -4,7 +4,6 @@ import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import getDesignTokens from "../_style/MyTheme";
 import { Box, CssBaseline } from "@mui/material";
 import TopBar from "./TopBar";
-import { useUser } from "@clerk/nextjs";
 import SideBar from "./SideBar";
 
 export const DrawerHeader = styled("div")(({ theme }) => ({
@@ -21,7 +20,6 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
 function AppRoot({ child }) {
   const [mode, setMode] = useState("light");
   const [open, setOpen] = useState(false);
-  const { user } = useUser();
 
   useEffect(() => {
     // جلب الوضع المخزن في localStorage بعد تحميل الصفحة
@@ -50,12 +48,12 @@ function AppRoot({ child }) {
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
 
-        {user && <TopBar {...{ open, handleDrawerOpen, setMode }} />}
+        <TopBar {...{ open, handleDrawerOpen, setMode }} />
 
-        {user && <SideBar {...{ open, handleDrawerClose }} />}
+        <SideBar {...{ open, handleDrawerClose }} />
 
-        <Box component="main" sx={{ flexGrow: 1, p: user && 3 }}>
-          {user && <DrawerHeader />}
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
           {child}
         </Box>
       </Box>

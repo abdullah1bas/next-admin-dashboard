@@ -5,9 +5,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchInput from "./SearchInput";
 import { NotificationsOutlined } from "@mui/icons-material";
 import ModeButton from "./ModeButton";
-import { UserButton, useUser } from "@clerk/nextjs";
-import Link from "next/link";
-import changeClerk from "./changeClerk";
+import AccSetting from "./AccSetting";
 
 const drawerWidth = 240;
 
@@ -32,9 +30,6 @@ const AppBarr = styled(MuiAppBar, {
 
 // eslint-disable-next-line react/prop-types
 const TopBar = ({ open, handleDrawerOpen, setMode }) => {
-  const { user } = useUser();
-  changeClerk(".cl-internal-16vtwdp");
-  changeClerk(".cl-internal-lk7758");
   return (
     <AppBarr
       position="fixed"
@@ -68,29 +63,7 @@ const TopBar = ({ open, handleDrawerOpen, setMode }) => {
             </IconButton>
           </Tooltip>
         </Stack>
-        {!user ? (
-          <div className="sm:flex sm:gap-4">
-            {[
-              {
-                classN:
-                  "block login-button bg-primary text-white hover:bg-teal-500 dark:hover:bg-teal-500",
-                name: "Login",
-                ref: "/sign-in",
-              },
-              {
-                classN: "login-button register-button",
-                name: "Register",
-                ref: "/sign-up",
-              },
-            ].map((link) => (
-              <Link key={link.ref} href={link.ref} className={link.classN}>
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <UserButton afterSignOutUrl="/" />
-        )}
+        <AccSetting />
       </Toolbar>
     </AppBarr>
   );
